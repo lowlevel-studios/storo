@@ -1,0 +1,6 @@
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    package="st.lowlevel.chronos">
+
+    <uses-sdk tools:overrideLibrary="rx.android" />
+
+</manifest>

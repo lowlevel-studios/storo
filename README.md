@@ -1,5 +1,7 @@
 # Chronos
 
+[![](https://jitpack.io/v/lowlevel-studios/chronos.svg)](https://jitpack.io/#lowlevel-studios/chronos)
+
 An Android library to cache any serializable objects to disk, using a LRU cache implementation, with the possibility to specify an expiry time for each entry and a maximum size that can be allocated.
 
 ## How to use

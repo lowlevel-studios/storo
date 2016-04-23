@@ -31,7 +31,7 @@ public class Chronos {
     static synchronized boolean initialize(@NonNull ChronosBuilder builder) {
         try {
             File dir = new File(builder.cacheDir, "chronos");
-            if (!dir.exists() && !dir.mkdirs()) {
+            if (!dir.exists() && !dir.mkdir()) {
                 throw new IOException();
             }
             mCache = SimpleDiskCache.open(dir, 1, builder.maxSize);

@@ -32,7 +32,7 @@ public class Chronos {
         try {
             File dir = new File(builder.cacheDir, "chronos");
             if (!dir.exists() && !dir.mkdir()) {
-                throw new IOException();
+                throw new IOException("Cache folder could not be created.");
             }
             mCache = SimpleDiskCache.open(dir, 1, builder.maxSize);
             mGson = builder.gson;

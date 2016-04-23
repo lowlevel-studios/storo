@@ -182,6 +182,15 @@ public class Chronos {
     }
 
     /**
+     * Checks if the Chronos instance is initialized
+     *
+     * @return true if the instance is initialized
+     */
+    public static boolean isInitialized() {
+        return mInitialized;
+    }
+
+    /**
      * Puts an object with the given key
      *
      * @param key the key string

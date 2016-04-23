@@ -2,7 +2,6 @@ package st.lowlevel.chronos;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -15,8 +14,6 @@ import java.lang.reflect.Type;
 
 public class Chronos {
 
-    private static final String TAG = Chronos.class.getSimpleName();
-
     public static final long NO_EXPIRY = 0;
 
     private static SimpleDiskCache mCache;
@@ -28,7 +25,7 @@ public class Chronos {
      *
      * @param builder the builder instance
      */
-    static synchronized boolean initialize(@NonNull ChronosBuilder builder) {
+    static synchronized void initialize(@NonNull ChronosBuilder builder) {
         try {
             File dir = new File(builder.cacheDir, "chronos");
             if (!dir.exists() && !dir.mkdir()) {
@@ -37,10 +34,8 @@ public class Chronos {
             mCache = SimpleDiskCache.open(dir, 1, builder.maxSize);
             mGson = builder.gson;
             mInitialized = true;
-            return true;
         } catch (Exception e) {
-            Log.e(TAG, "Chronos instance could not be initialized!", e);
-            return false;
+            throw new RuntimeException("Chronos instance could not be initialized!", e);
         }
     }
 
@@ -184,15 +179,6 @@ public class Chronos {
     public static Expired hasExpired(@NonNull String key) {
         failIfNotInitialized();
         return new Expired(key);
-    }
-
-    /**
-     * Checks if the Chronos instance is initialized
-     *
-     * @return true if the instance is initialized
-     */
-    public static boolean isInitialized() {
-        return mInitialized;
     }
 
     /**

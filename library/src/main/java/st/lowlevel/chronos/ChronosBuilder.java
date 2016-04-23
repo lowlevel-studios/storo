@@ -65,7 +65,7 @@ public class ChronosBuilder {
             return setCacheDirectory(context.getCacheDir());
         case PREFER_EXTERNAL:
             File dir = context.getExternalCacheDir();
-            if (dir == null) {
+            if (dir == null || !dir.exists() || !dir.canWrite()) {
                 dir = context.getCacheDir();
             }
             return setCacheDirectory(dir);

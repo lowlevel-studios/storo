@@ -90,7 +90,7 @@ public class ChronosBuilder {
      * @param context the application context
      */
     public ChronosBuilder setDefaultCacheDirectory(@NonNull Context context) {
-        return setCacheDirectory(context, Storage.PREFER_EXTERNAL);
+        return setCacheDirectory(context, Storage.INTERNAL);
     }
 
     /**

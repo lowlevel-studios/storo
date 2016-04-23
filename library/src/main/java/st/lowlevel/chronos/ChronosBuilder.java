@@ -43,14 +43,14 @@ public class ChronosBuilder {
     /**
      * Initializes the Chronos instance
      */
-    public synchronized void initialize() {
+    public synchronized boolean initialize() {
         if (cacheDir == null) {
             throw new RuntimeException("No cache directory has been specified.");
         }
         if (gson == null) {
             gson = createGson();
         }
-        Chronos.initialize(this);
+        return Chronos.initialize(this);
     }
 
     /**

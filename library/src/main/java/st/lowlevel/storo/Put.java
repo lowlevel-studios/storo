@@ -1,15 +1,15 @@
-package st.lowlevel.chronos;
+package st.lowlevel.storo;
 
 import android.support.annotation.NonNull;
 
 import java.util.concurrent.TimeUnit;
 
-import st.lowlevel.chronos.model.BaseMethod;
-import st.lowlevel.chronos.model.EntryData;
+import st.lowlevel.storo.model.BaseMethod;
+import st.lowlevel.storo.model.EntryData;
 
 public class Put<T> extends BaseMethod<Boolean> {
 
-    private long expiry = Chronos.NO_EXPIRY;
+    private long expiry = Storo.NO_EXPIRY;
     private String key;
     private T object;
 
@@ -24,7 +24,7 @@ public class Put<T> extends BaseMethod<Boolean> {
         entry.data = object;
         entry.expiry = expiry;
         try {
-            Chronos.internalPut(key, entry);
+            Storo.internalPut(key, entry);
             return true;
         } catch (Exception e) {
             return false;

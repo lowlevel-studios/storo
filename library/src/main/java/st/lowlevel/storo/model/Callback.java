@@ -1,4 +1,4 @@
-package st.lowlevel.chronos.model;
+package st.lowlevel.storo.model;
 
 public interface Callback<T> {
     void onResult(T result);

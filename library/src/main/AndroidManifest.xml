@@ -1,5 +1,5 @@
 <manifest xmlns:tools="http://schemas.android.com/tools"
-    package="st.lowlevel.chronos">
+    package="st.lowlevel.storo">
 
     <uses-sdk tools:overrideLibrary="rx.android" />
 

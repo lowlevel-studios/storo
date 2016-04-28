@@ -1,9 +1,9 @@
-package st.lowlevel.chronos;
+package st.lowlevel.storo;
 
 import android.support.annotation.NonNull;
 
-import st.lowlevel.chronos.model.BaseMethod;
-import st.lowlevel.chronos.model.Entry;
+import st.lowlevel.storo.model.BaseMethod;
+import st.lowlevel.storo.model.Entry;
 
 public class Expired extends BaseMethod<Boolean> {
 

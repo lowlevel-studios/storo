@@ -1,4 +1,4 @@
-package st.lowlevel.chronos;
+package st.lowlevel.storo;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.File;
 
-public class ChronosBuilder {
+public class StoroBuilder {
 
     File cacheDir;
     Gson gson;
@@ -20,7 +20,7 @@ public class ChronosBuilder {
         PREFER_EXTERNAL
     }
 
-    private ChronosBuilder(long maxSize) {
+    private StoroBuilder(long maxSize) {
         this.maxSize = maxSize;
     }
 
@@ -32,16 +32,16 @@ public class ChronosBuilder {
     }
 
     /**
-     * Starts the configuration of the Chronos instance
+     * Starts the configuration of the Storo instance
      *
      * @param maxSize the maximum size in bytes
      */
-    public static ChronosBuilder configure(long maxSize) {
-        return new ChronosBuilder(maxSize);
+    public static StoroBuilder configure(long maxSize) {
+        return new StoroBuilder(maxSize);
     }
 
     /**
-     * Initializes the Chronos instance
+     * Initializes the Storo instance
      */
     public synchronized void initialize() {
         if (cacheDir == null) {
@@ -50,7 +50,7 @@ public class ChronosBuilder {
         if (gson == null) {
             gson = createGson();
         }
-        Chronos.initialize(this);
+        Storo.initialize(this);
     }
 
     /**
@@ -59,7 +59,7 @@ public class ChronosBuilder {
      * @param context the application context
      * @param storage the storage to use for the cache
      */
-    public ChronosBuilder setCacheDirectory(@NonNull Context context, @NonNull Storage storage) {
+    public StoroBuilder setCacheDirectory(@NonNull Context context, @NonNull Storage storage) {
         switch (storage) {
         case INTERNAL:
             return setCacheDirectory(context.getCacheDir());
@@ -79,7 +79,7 @@ public class ChronosBuilder {
      *
      * @param cacheDir the cache directory
      */
-    public ChronosBuilder setCacheDirectory(@NonNull File cacheDir) {
+    public StoroBuilder setCacheDirectory(@NonNull File cacheDir) {
         this.cacheDir = cacheDir;
         return this;
     }
@@ -89,7 +89,7 @@ public class ChronosBuilder {
      *
      * @param context the application context
      */
-    public ChronosBuilder setDefaultCacheDirectory(@NonNull Context context) {
+    public StoroBuilder setDefaultCacheDirectory(@NonNull Context context) {
         return setCacheDirectory(context, Storage.INTERNAL);
     }
 
@@ -98,7 +98,7 @@ public class ChronosBuilder {
      *
      * @param gson the Gson instance
      */
-    public ChronosBuilder setGsonInstance(@NonNull Gson gson) {
+    public StoroBuilder setGsonInstance(@NonNull Gson gson) {
         this.gson = gson;
         return this;
     }
@@ -108,7 +108,7 @@ public class ChronosBuilder {
      *
      * @param version the app version
      */
-    public ChronosBuilder setVersion(double version) {
+    public StoroBuilder setVersion(double version) {
         this.version = version;
         return this;
     }

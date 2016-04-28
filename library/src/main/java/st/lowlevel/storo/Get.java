@@ -1,12 +1,12 @@
-package st.lowlevel.chronos;
+package st.lowlevel.storo;
 
 import android.support.annotation.NonNull;
 
 import java.lang.reflect.Type;
 
-import st.lowlevel.chronos.model.BaseMethod;
-import st.lowlevel.chronos.model.EntryData;
-import st.lowlevel.chronos.model.EntryDataType;
+import st.lowlevel.storo.model.BaseMethod;
+import st.lowlevel.storo.model.EntryData;
+import st.lowlevel.storo.model.EntryDataType;
 
 public class Get<T> extends BaseMethod<T> {
 
@@ -22,12 +22,12 @@ public class Get<T> extends BaseMethod<T> {
     @Override
     public T execute() {
         if (!ignoreExpiry) {
-            Boolean expired = Chronos.hasExpired(key).execute();
+            Boolean expired = Storo.hasExpired(key).execute();
             if (expired != null && expired) {
                 return null;
             }
         }
-        EntryData<T> entry = Chronos.internalGet(key, new EntryDataType<>(typeOfT));
+        EntryData<T> entry = Storo.internalGet(key, new EntryDataType<>(typeOfT));
         if (entry == null) {
             return null;
         }

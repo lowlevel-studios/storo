@@ -1,4 +1,4 @@
-package st.lowlevel.chronos;
+package st.lowlevel.storo;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

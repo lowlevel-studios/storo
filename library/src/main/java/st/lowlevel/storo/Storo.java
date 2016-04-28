@@ -1,4 +1,4 @@
-package st.lowlevel.chronos;
+package st.lowlevel.storo;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 
-public class Chronos {
+public class Storo {
 
     public static final long NO_EXPIRY = 0;
 
@@ -21,13 +21,13 @@ public class Chronos {
     private static boolean mInitialized;
 
     /**
-     * Initializes the Chronos instance
+     * Initializes the Storo instance
      *
      * @param builder the builder instance
      */
-    static synchronized void initialize(@NonNull ChronosBuilder builder) {
+    static synchronized void initialize(@NonNull StoroBuilder builder) {
         try {
-            File dir = new File(builder.cacheDir, "chronos");
+            File dir = new File(builder.cacheDir, "storo");
             if (!dir.exists() && !dir.mkdir()) {
                 throw new IOException("Cache folder could not be created.");
             }
@@ -35,18 +35,18 @@ public class Chronos {
             mGson = builder.gson;
             mInitialized = true;
         } catch (Exception e) {
-            throw new RuntimeException("Chronos instance could not be initialized!", e);
+            throw new RuntimeException("Storo instance could not be initialized!", e);
         }
     }
 
     /**
-     * Checks if the Chronos instance has been initialized
+     * Checks if the Storo instance has been initialized
      *
      * @throws IllegalStateException
      */
     static void failIfNotInitialized() throws IllegalStateException {
         if (!mInitialized) {
-            throw new IllegalStateException("Chronos instance is not initialized! You must call initialize() before calling any other methods.");
+            throw new IllegalStateException("Storo instance is not initialized! You must call initialize() before calling any other methods.");
         }
     }
 
@@ -182,7 +182,7 @@ public class Chronos {
     }
 
     /**
-     * Checks if the Chronos instance is initialized
+     * Checks if the Storo instance is initialized
      *
      * @return true if the instance is initialized
      */

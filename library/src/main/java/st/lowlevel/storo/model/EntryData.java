@@ -1,4 +1,4 @@
-package st.lowlevel.chronos.model;
+package st.lowlevel.storo.model;
 
 public final class EntryData<T> extends Entry {
 

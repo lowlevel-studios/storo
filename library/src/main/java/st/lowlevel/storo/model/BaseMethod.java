@@ -1,4 +1,4 @@
-package st.lowlevel.chronos.model;
+package st.lowlevel.storo.model;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

@@ -1,7 +1,7 @@
-# Chronos
+# Storo
 
-[![](https://jitpack.io/v/lowlevel-studios/chronos.svg)](https://jitpack.io/#lowlevel-studios/chronos)
-[![Build Status](https://travis-ci.org/lowlevel-studios/chronos.svg?branch=master)](https://travis-ci.org/lowlevel-studios/chronos)
+[![](https://jitpack.io/v/lowlevel-studios/storo.svg)](https://jitpack.io/#lowlevel-studios/storo)
+[![Build Status](https://travis-ci.org/lowlevel-studios/storo.svg?branch=master)](https://travis-ci.org/lowlevel-studios/storo)
 
 An Android library to cache any serializable objects to disk, using a LRU cache implementation, with the possibility to specify an expiry time for each entry and a maximum size that can be allocated.
 
@@ -20,15 +20,15 @@ repositores {
 And then add the following line into the 'dependencies' block:
 
 ```
-compile('com.github.lowlevel-studios:chronos:1.0.0') {
+compile('com.github.lowlevel-studios:storo:1.0.0') {
     transitive = true
 }
 ```
 
-### Initialize Chronos
+### Initialize Storo
 
 ```java
-ChronosBuilder.configure(8192)  // maximum size to allocate in bytes
+StoroBuilder.configure(8192)  // maximum size to allocate in bytes
     .setDefaultCacheDirectory(this)
     .initialize();
 ```
@@ -36,45 +36,45 @@ ChronosBuilder.configure(8192)  // maximum size to allocate in bytes
 ### Put an object
 
 ```java
-Chronos.put("key", object).execute(); // store object without an expiry
-Chronos.put("key", object).setExpiry(2, TimeUnit.HOURS).execute();  // store object with an expiry of 2 hours
+Storo.put("key", object).execute(); // store object without an expiry
+Storo.put("key", object).setExpiry(2, TimeUnit.HOURS).execute();  // store object with an expiry of 2 hours
 ```
 
 ### Get an object
 
 ```java
-MyObject object = Chronos.get("key", MyObject.class).execute();
+MyObject object = Storo.get("key", MyObject.class).execute();
 ```
 
 ### Delete an object
 
 ```java
-boolean result = Chronos.delete("key");
+boolean result = Storo.delete("key");
 ```
 
 ### Check if an object exists
 
 ```java
-boolean result = Chronos.contains("key");
+boolean result = Storo.contains("key");
 ```
 
 ### Check if an object has expired
 
 ```java
-Boolean result = Chronos.hasExpired("key").execute();   // null if the object does not exist
+Boolean result = Storo.hasExpired("key").execute();   // null if the object does not exist
 ```
 
 ### Clear the entire cache
 
 ```java
-boolean result = Chronos.clear();
+boolean result = Storo.clear();
 ```
 
 ### Async calls
 ```java
-Chronos.put("key", object, ...).async(new Callback<Boolean>);
-Chronos.get("key", MyObject.class).async(new Callback<MyObject>);
-Chronos.hasExpired("key").async(new CallBack<Boolean>);
+Storo.put("key", object, ...).async(new Callback<Boolean>);
+Storo.get("key", MyObject.class).async(new Callback<MyObject>);
+Storo.hasExpired("key").async(new CallBack<Boolean>);
 ```
 
 ### RxJava support

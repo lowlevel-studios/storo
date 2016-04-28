@@ -20,7 +20,7 @@ repositores {
 And then add the following line into the 'dependencies' block:
 
 ```
-compile('com.github.lowlevel-studios:storo:1.0.0') {
+compile('com.github.lowlevel-studios:storo:1.0.3') {
     transitive = true
 }
 ```

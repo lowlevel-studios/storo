@@ -2,6 +2,7 @@
 
 [![](https://jitpack.io/v/lowlevel-studios/storo.svg)](https://jitpack.io/#lowlevel-studios/storo)
 [![Build Status](https://travis-ci.org/lowlevel-studios/storo.svg?branch=master)](https://travis-ci.org/lowlevel-studios/storo)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Storo-green.svg?style=true)](https://android-arsenal.com/details/1/3538)
 
 An Android library to cache any serializable objects to disk, using a LRU cache implementation, with the possibility to specify an expiry time for each entry and a maximum size that can be allocated.
 

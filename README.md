@@ -1,3 +1,5 @@
+![Storo](https://raw.githubusercontent.com/lowlevel-studios/storo/assets/logo.png)
+
 # Storo
 
 [![](https://jitpack.io/v/lowlevel-studios/storo.svg)](https://jitpack.io/#lowlevel-studios/storo)

@@ -36,7 +36,7 @@ public class Put<T> extends BaseMethod<Boolean> {
      *
      * @param expiry the expiry timestamp
      */
-    public Put setExpiry(long expiry) {
+    public Put<T> setExpiry(long expiry) {
         this.expiry = expiry;
         return this;
     }
@@ -47,7 +47,7 @@ public class Put<T> extends BaseMethod<Boolean> {
      * @param duration the object duration
      * @param unit the time unit of the duration
      */
-    public Put setExpiry(long duration, @NonNull TimeUnit unit) {
+    public Put<T> setExpiry(long duration, @NonNull TimeUnit unit) {
         return setExpiry(System.currentTimeMillis() + unit.toMillis(duration));
     }
 }

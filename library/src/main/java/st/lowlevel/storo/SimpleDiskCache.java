@@ -18,6 +18,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -36,7 +37,7 @@ public class SimpleDiskCache {
 	private static final int METADATA_IDX = 1;
 	private static final List<File> usedDirs = new ArrayList<File>();
 
-	private com.jakewharton.disklrucache.DiskLruCache diskLruCache;
+	private DiskLruCache diskLruCache;
 	private int mAppVersion;
 
 	private SimpleDiskCache(File dir, int appVersion, long maxSize) throws IOException {
@@ -76,6 +77,13 @@ public class SimpleDiskCache {
 
 	public DiskLruCache getCache() {
 		return diskLruCache;
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, String> getLruEntries() throws IllegalAccessException, NoSuchFieldException {
+		Field f = diskLruCache.getClass().getDeclaredField("lruEntries");
+		f.setAccessible(true);
+		return (Map<String, String>) f.get(diskLruCache);
 	}
 
 	public InputStreamEntry getInputStream(String key) throws IOException {

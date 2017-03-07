@@ -131,6 +131,20 @@ public class Storo {
     }
 
     /**
+     * Gets the number of entries in the cache
+     *
+     * @return the entry count or -1 if an error occurs
+     */
+    public static int count() {
+        failIfNotInitialized();
+        try {
+            return mCache.getLruEntries().size();
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    /**
      * Deletes an object with the given key
      *
      * @param key the key string
@@ -167,6 +181,15 @@ public class Storo {
     @NonNull
     public static <T> Get<T> get(@NonNull String key, @NonNull Type typeOfT) {
         return new Get<>(key, typeOfT);
+    }
+
+    /**
+     * Returns the disk cache instance
+     *
+     * @return the instance or null if not initialized
+     */
+    public static SimpleDiskCache getCache() {
+        return mCache;
     }
 
     /**

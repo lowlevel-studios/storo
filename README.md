@@ -23,7 +23,7 @@ repositores {
 And then add the following line into the 'dependencies' block:
 
 ```
-compile('com.github.lowlevel-studios:storo:1.0.3') {
+compile('com.github.lowlevel-studios:storo:1.1.0') {
     transitive = true
 }
 ```
@@ -65,6 +65,12 @@ boolean result = Storo.contains("key");
 
 ```java
 Boolean result = Storo.hasExpired("key").execute();   // null if the object does not exist
+```
+
+### Get the object count
+
+```java
+int count = Storo.count();
 ```
 
 ### Clear the entire cache

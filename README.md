@@ -23,7 +23,7 @@ repositores {
 And then add the following line into the 'dependencies' block:
 
 ```
-compile('com.github.lowlevel-studios:storo:1.1.0') {
+compile('com.github.lowlevel-studios:storo:1.2.0') {
     transitive = true
 }
 ```
@@ -39,7 +39,7 @@ StoroBuilder.configure(8192)  // maximum size to allocate in bytes
 ### Put an object
 
 ```java
-Storo.put("key", object).execute(); // store object without an expiry
+Storo.put("key", object).execute();  // store object without an expiry
 Storo.put("key", object).setExpiry(2, TimeUnit.HOURS).execute();  // store object with an expiry of 2 hours
 ```
 
@@ -83,16 +83,24 @@ boolean result = Storo.clear();
 ```java
 Storo.put("key", object, ...).async(new Callback<Boolean>);
 Storo.get("key", MyObject.class).async(new Callback<MyObject>);
-Storo.hasExpired("key").async(new CallBack<Boolean>);
+Storo.hasExpired("key").async(new Callback<Boolean>);
 ```
 
-### RxJava support
+### RxJava (1.x and 2.x) support
 
-If no callback is passed to ```async()```, it will return an ```Observable``` that will be scheduled on a background thread and observed on the main thread.
+This library provides two helper classes (```RxStoro``` and ```RxStoro2```, for RxJava 1.x and 2.x respectively) that can be used to obtain a ```Single<T>``` that will execute the passed method.
+
+```java
+// RxJava 1.x
+RxStoro.with(Storo.put("key", object, ....)).subscribe(...);  // this will be scheduled on the caller thread
+
+// RxJava 2.x
+RxStoro2.async(Storo.get("key", MyObject.class)).subscribe(...);  // this will be scheduled on a background thread and observed on the main thread
+```
 
 ## License
 
-    Copyright 2016 Lowlevel Studios
+    Copyright 2017 Lowlevel Studios
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

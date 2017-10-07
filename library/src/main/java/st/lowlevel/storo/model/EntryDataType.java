@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public class EntryDataType<T> implements ParameterizedType {
+public class EntryDataType implements ParameterizedType {
 
     private Type mType;
 

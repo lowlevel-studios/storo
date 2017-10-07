@@ -27,7 +27,7 @@ public class Get<T> extends BaseMethod<T> {
                 return null;
             }
         }
-        EntryData<T> entry = Storo.internalGet(key, new EntryDataType<>(typeOfT));
+        EntryData<T> entry = Storo.internalGet(key, new EntryDataType(typeOfT));
         if (entry == null) {
             return null;
         }
